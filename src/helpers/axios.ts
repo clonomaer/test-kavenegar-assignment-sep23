@@ -17,7 +17,6 @@ const axios = Axios.create({
 
 async function unauthorizeUser(): Promise<void> {
   removeCookie("token");
-  localStorage.removeItem("userInfo");
   window.location.reload();
 }
 

@@ -4,6 +4,7 @@ export function getCookie(name: string): string | undefined {
   if (parts.length === 2) {
     return parts.pop()?.split(";").shift();
   }
+  return undefined;
 }
 
 export function removeCookie(name: string): void {

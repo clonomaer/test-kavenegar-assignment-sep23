@@ -29,7 +29,7 @@ const TicketListItem: React.FC<TicketListItemProps> = ({ ticket }) => {
           {defaultLocale.api.tickets.titles.status}
           {`:`}
         </span>
-        <span>{ticket.status}</span>
+        <span>{defaultLocale.api.tickets.status[ticket.status]}</span>
       </p>
       {/*  */}
     </div>

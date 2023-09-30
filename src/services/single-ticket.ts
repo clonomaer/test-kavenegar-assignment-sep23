@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { TicketMessageData } from "../types/ticket-message";
 
 export class SingleTicketService {
-  constructor(private readonly id: string) {}
+  constructor(private readonly id: number) {}
 
   submitNewMessage() {
     throw new Error("not implemented");
@@ -21,7 +21,7 @@ export class SingleTicketService {
 }
 
 export function useSingleTicketService(
-  id: string,
+  id: number,
   dependencies: React.DependencyList = []
 ) {
   const [service, setService] = useState(() => new SingleTicketService(id));

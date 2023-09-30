@@ -12,7 +12,9 @@ To respect your time constraints, I have aimed to complete the task within the s
 
 ## Delivery
 
-The project is fully version-controlled using GitHub. You can access the repository through the following link: [test-kavenegar-assignment-sep23.git](https://github.com/clonomaer/test-kavenegar-assignment-sep23.git)
+The project is fully version-controlled using GitHub.  
+You can access the repository through the following link: [test-kavenegar-assignment-sep23.git](https://github.com/clonomaer/test-kavenegar-assignment-sep23.git)  
+You can also access the latest deployment made possible by Vercel through [this link](https://test-kavenegar-assignment-sep23.vercel.app/)
 
 ## Functional Requirements
 

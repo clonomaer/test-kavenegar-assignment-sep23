@@ -4,7 +4,7 @@ export enum TicketStatus {
   "CLOSED" = "closed",
 }
 
-export type SingleTicketData = {
+export type TicketData = {
   id: number;
   received: string;
   title: string;

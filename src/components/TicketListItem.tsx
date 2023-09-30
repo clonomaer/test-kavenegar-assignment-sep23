@@ -1,11 +1,11 @@
 import React, { useMemo } from "react";
-import { SingleTicketData } from "../types/ticket";
+import { TicketData } from "../types/ticket";
 import moment from "moment";
 import { parseServerDate } from "../utils/format-server-time";
 import { defaultLocale } from "../locales/default";
 
 interface TicketListItemProps {
-  ticket: SingleTicketData;
+  ticket: TicketData;
 }
 
 const TicketListItem: React.FC<TicketListItemProps> = ({ ticket }) => {

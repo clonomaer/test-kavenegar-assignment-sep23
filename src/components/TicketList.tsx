@@ -1,9 +1,9 @@
 import React from "react";
 import TicketListItem from "./TicketListItem";
-import { SingleTicketData } from "../types/ticket";
+import { TicketData } from "../types/ticket";
 
 interface TicketListProps {
-  tickets: SingleTicketData[];
+  tickets: TicketData[];
 }
 
 const TicketList: React.FC<TicketListProps> = ({ tickets }) => {

@@ -1,4 +1,4 @@
-export type TicketResponseData = {
+export type TicketMessageData = {
   id: number;
   message: string;
 };

@@ -2,6 +2,8 @@ import MockAdapter from "axios-mock-adapter";
 import { axios } from "./axios";
 import { TicketData, TicketStatus } from "../types/ticket";
 import { TicketMessageData } from "../types/ticket-message";
+import _ from "lodash";
+import { formatServerDate } from "../utils/format-datetime";
 
 const mock = new MockAdapter(axios, { delayResponse: 600 });
 
@@ -100,6 +102,26 @@ mock.onGet(singleTicketUrlRegex).reply((config) => {
     }
   }
   return [204, { status: 404, errors: null, data: null }];
+});
+
+mock.onPost("/ticket").reply((config) => {
+  const id = _.random(0, Number.MAX_SAFE_INTEGER);
+  allTickets.push({
+    ...JSON.parse(config.data),
+    id,
+    received: formatServerDate(new Date()),
+    status: TicketStatus.PENDING,
+  });
+  ticketsMessagesData[id] = [];
+  console.log("here", JSON.parse(config.data));
+  return [
+    201,
+    {
+      status: 201,
+      errors: null,
+      data: null,
+    },
+  ];
 });
 
 export { mock };

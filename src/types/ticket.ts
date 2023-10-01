@@ -21,7 +21,7 @@ export type TicketWithMessagesData = {
 };
 
 /** @abstract do not instantiate directly or assign right after instantiation */
-export class TicketFormDTO {
+export class TicketFormDto {
   @IsNotEmpty({ message: "Title is required" })
   @MinLength(6, { message: "Title is too short" })
   @MaxLength(160, { message: "Title is too long" })

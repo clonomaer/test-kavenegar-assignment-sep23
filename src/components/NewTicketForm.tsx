@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { TicketFormDTO } from "../types/ticket";
+import { TicketFormDto } from "../types/ticket";
 import createOnSubmit from "../factories/on-submit";
 import Input from "./Input";
 import Button from "./Button";
@@ -28,10 +28,10 @@ const NewTicketForm: React.FC<NewTicketFormProps> = () => {
     handleSubmit,
     setError,
     formState: { errors },
-  } = useForm<TicketFormDTO>();
+  } = useForm<TicketFormDto>();
 
   const onSubmit = handleSubmit(
-    createOnSubmit(TicketFormDTO, setError, mutate)
+    createOnSubmit(TicketFormDto, setError, mutate)
   );
 
   return (

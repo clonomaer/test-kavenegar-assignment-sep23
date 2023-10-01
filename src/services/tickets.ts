@@ -1,11 +1,11 @@
 import { axios } from "../helpers/axios";
 import { MutationOptions, QueryOptions } from "../types/api";
-import { TicketData, TicketFormDTO } from "../types/ticket";
+import { TicketData, TicketFormDto } from "../types/ticket";
 import { useState } from "react";
 import { parseServerDate } from "../utils/format-datetime";
 
 export class TicketService {
-  readonly submitOptions: MutationOptions<TicketFormDTO> = {
+  readonly submitOptions: MutationOptions<TicketFormDto> = {
     mutationKey: ["submitNewTicket"],
     mutationFn: (body) => axios.post("/ticket", body),
   };

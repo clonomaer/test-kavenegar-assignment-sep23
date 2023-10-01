@@ -74,7 +74,9 @@ const TicketDetails: React.FC<TicketDetailsProps> = ({ ticketId }) => {
               key={message.id}
               className="text-text-secondary border-b border-primary-800"
             >
-              {message.message}
+              {message.message.split("\n").map((line, index) => (
+                <p key={index}>{line}</p>
+              ))}
             </li>
           ))}
         </ul>

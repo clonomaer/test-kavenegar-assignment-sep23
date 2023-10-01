@@ -11,6 +11,7 @@ export const defaultLocale = {
         title: "Title",
         received: "Received",
         status: "Status",
+        messages: "Messages",
       },
       status: {
         [TicketStatus.ANSWERED]: "Answered",

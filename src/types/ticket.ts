@@ -1,3 +1,5 @@
+import { TicketMessageData } from "./ticket-message";
+
 export enum TicketStatus {
   "PENDING" = "pending",
   "ANSWERED" = "answered",
@@ -10,4 +12,9 @@ export type TicketData = {
   title: string;
   message: string;
   status: TicketStatus;
+};
+
+export type TicketDataWithMessages = {
+  ticket: TicketData;
+  messages: TicketMessageData[];
 };

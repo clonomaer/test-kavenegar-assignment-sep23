@@ -54,7 +54,7 @@ const ticketsMessagesData: { [key: number]: TicketMessageData[] } = {
       message: "user reply",
     },
     {
-      id: 3233,
+      id: 32343,
       message: "second admin reply",
     },
   ],
@@ -68,7 +68,7 @@ const ticketsMessagesData: { [key: number]: TicketMessageData[] } = {
       message: "user reply",
     },
     {
-      id: 1233,
+      id: 13233,
       message: "second admin reply",
     },
   ],
@@ -80,7 +80,7 @@ mock.onGet("/tickets").reply(200, {
   data: allTickets,
 });
 
-const singleTicketUrlRegex = /\/tickets\/([0-9]+)/;
+const singleTicketUrlRegex = /\/ticket\/([0-9]+)/;
 mock.onGet(singleTicketUrlRegex).reply((config) => {
   const match = singleTicketUrlRegex.exec(config.url ?? "");
   if (match && match[1]) {
@@ -91,7 +91,10 @@ mock.onGet(singleTicketUrlRegex).reply((config) => {
         {
           status: 200,
           errors: null,
-          data: ticketsMessagesData[item.id],
+          data: {
+            ticket: item,
+            messages: ticketsMessagesData[item.id],
+          },
         },
       ];
     }

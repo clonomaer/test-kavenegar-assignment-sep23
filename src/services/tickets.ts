@@ -1,5 +1,5 @@
 import { axios } from "../helpers/axios";
-import { ApiResponse, QueryOptions } from "../types/api";
+import { QueryOptions } from "../types/api";
 import { TicketData } from "../types/ticket";
 import { useState } from "react";
 
@@ -11,8 +11,7 @@ export class TicketService {
   /** @notice pagination would require more complex abstracting */
   readonly queryOptions: QueryOptions<TicketData[]> = {
     queryKey: ["userTicketsList"],
-    queryFn: ({ signal }) =>
-      axios.get<ApiResponse<TicketData[]>>("/tickets", { signal }),
+    queryFn: ({ signal }) => axios.get("/tickets", { signal }),
     select: (res) => res.data.data,
   };
 }

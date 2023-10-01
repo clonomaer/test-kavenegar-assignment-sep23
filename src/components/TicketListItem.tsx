@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { TicketData } from "../types/ticket";
 import moment from "moment";
-import { parseServerDate } from "../utils/format-server-time";
+import { parseServerDate } from "../utils/format-datetime";
 import { defaultLocale } from "../locales/default";
 import { Link } from "react-router-dom";
 

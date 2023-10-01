@@ -9,69 +9,81 @@ const mock = new MockAdapter(axios, { delayResponse: 600 });
 
 const allTickets: TicketData[] = [
   {
-    id: 7,
+    id: 1001,
     received: "2023-08-31 18:09:35",
-    title: "some title",
-    message: "some message",
+    title: "Internet Connection Issue",
+    message:
+      "I'm experiencing issues with my internet connection. Can someone assist me?",
     status: TicketStatus.PENDING,
   },
   {
-    id: 8,
+    id: 1002,
     received: "2021-08-31 18:09:35",
-    title: "some 22 title",
-    message: "some message",
+    title: "Billing Inquiry",
+    message:
+      "I have a question about my recent bill. Can you provide some clarification?",
     status: TicketStatus.ANSWERED,
   },
   {
-    id: 9,
+    id: 1003,
     received: "2019-08-31 18:09:35",
-    title: "some title",
-    message: "some message",
-    status: TicketStatus.PENDING,
+    title: "Software Installation Problem",
+    message:
+      "I'm having trouble installing the software on my computer. Need help!",
+    status: TicketStatus.CLOSED,
   },
 ];
 
 const ticketsMessagesData: { [key: number]: TicketMessageData[] } = {
-  7: [
+  1001: [
     {
-      id: 233,
-      message: "first admin reply",
+      id: 2001,
+      message:
+        "Hi there! We apologize for the inconvenience you're facing with your internet connection. Our technical team is looking into it and will get back to you shortly.",
     },
     {
-      id: 2323,
-      message: "user reply",
+      id: 2002,
+      message:
+        "I appreciate your quick response! Let me know if you need any additional information from my end.",
     },
     {
-      id: 2343,
-      message: "second admin reply",
-    },
-  ],
-  8: [
-    {
-      id: 3233,
-      message: "first admin reply",
-    },
-    {
-      id: 32323,
-      message: "user reply",
-    },
-    {
-      id: 32343,
-      message: "second admin reply",
+      id: 2003,
+      message:
+        "Good news! The issue has been identified and resolved. Your internet connection should be stable now. If you face any further problems, feel free to reach out.",
     },
   ],
-  9: [
+  1002: [
     {
-      id: 1233,
-      message: "first admin reply",
+      id: 3001,
+      message:
+        "Hello! Thank you for reaching out regarding your billing inquiry. I've reviewed your account, and I'll provide you with the details you need.",
     },
     {
-      id: 12323,
-      message: "user reply",
+      id: 3002,
+      message:
+        "Great! Please go ahead and share the details. I want to make sure everything is in order.",
     },
     {
-      id: 13233,
-      message: "second admin reply",
+      id: 3003,
+      message:
+        "I've sent you a detailed breakdown of your recent bill via email. If you have any more questions, feel free to ask.",
+    },
+  ],
+  1003: [
+    {
+      id: 4001,
+      message:
+        "Hi! I see you're having trouble with software installation. Let's troubleshoot the issue together. Have you encountered any error messages during the installation process?",
+    },
+    {
+      id: 4002,
+      message:
+        "Yes, I've received an error message about missing files. I'm not sure how to proceed from here.",
+    },
+    {
+      id: 4003,
+      message:
+        "Thank you for providing that information. I'll guide you through the steps to resolve the missing files issue. Let's get your software installed successfully!",
     },
   ],
 };

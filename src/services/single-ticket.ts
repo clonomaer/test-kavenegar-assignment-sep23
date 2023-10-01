@@ -1,10 +1,10 @@
 import { axios } from "../helpers/axios";
 import { QueryOptions } from "../types/api";
 import React, { useEffect, useState } from "react";
-import { TicketDataWithMessages } from "../types/ticket";
+import { TicketWithMessagesData } from "../types/ticket";
 
 export class SingleTicketService {
-  readonly queryOptions: QueryOptions<TicketDataWithMessages>;
+  readonly queryOptions: QueryOptions<TicketWithMessagesData>;
 
   constructor(private readonly id: number) {
     this.queryOptions = {

@@ -14,7 +14,7 @@ export type TicketData = {
   status: TicketStatus;
 };
 
-export type TicketDataWithMessages = {
+export type TicketWithMessagesData = {
   ticket: TicketData;
   messages: TicketMessageData[];
 };

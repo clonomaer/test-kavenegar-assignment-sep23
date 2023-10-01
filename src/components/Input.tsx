@@ -1,5 +1,5 @@
 import _ from "lodash";
-import React, { PropsWithoutRef, useId, useMemo } from "react";
+import React, { PropsWithoutRef, useId } from "react";
 import type { UseFormRegister, FieldErrors, Path } from "react-hook-form";
 
 type InputProps<T extends object, E extends "textarea" | "input"> = {
@@ -23,10 +23,7 @@ function Input<T extends object, E extends "textarea" | "input">({
   ...rest
 }: InputProps<T, E>) {
   const id = useId();
-  const error = useMemo(
-    () => _.get(errors, [name, "message"])?.toString(),
-    [errors, name]
-  );
+  const error = _.get(errors, [name, "message"])?.toString();
 
   return (
     <div className="flex flex-col gap-2">
@@ -43,7 +40,7 @@ function Input<T extends object, E extends "textarea" | "input">({
         ...(register?.(name) ?? {}),
         ...rest,
       })}
-      {error && <p className="text-red-500 text-xs italic">{error}</p>}
+      {error && <p className="text-red-500 text-xs">{error}</p>}
     </div>
   );
 }

@@ -5,10 +5,6 @@ import { useState } from "react";
 import { parseServerDate } from "../utils/format-datetime";
 
 export class TicketService {
-  submitNewTicket() {
-    throw new Error("not implemented");
-  }
-
   readonly submitOptions: MutationOptions<TicketFormDTO> = {
     mutationKey: ["submitNewTicket"],
     mutationFn: (body) => axios.post("/ticket", body),

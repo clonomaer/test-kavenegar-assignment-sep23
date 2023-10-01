@@ -25,7 +25,7 @@ export type QueryOptions<
 >;
 
 export type MutationOptions<
-  Dto extends object,
+  Dto extends object | null,
   TData extends DataBaseType | null = null,
   TContext = unknown
 > = UseMutationOptions<

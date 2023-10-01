@@ -155,4 +155,23 @@ mock.onPost(singleTicketUrlRegex).reply((config) => {
   return [204, { status: 404, errors: null, data: null }];
 });
 
+mock.onPatch(/\/ticket\/([0-9]+)\/close/).reply((config) => {
+  const match = singleTicketUrlRegex.exec(config.url ?? "");
+  if (match && match[1]) {
+    const item = allTickets.find((elm) => elm.id === Number(match[1]));
+    if (item) {
+      item.status = TicketStatus.CLOSED;
+      return [
+        200,
+        {
+          status: 200,
+          errors: null,
+          data: null,
+        },
+      ];
+    }
+  }
+  return [204, { status: 404, errors: null, data: null }];
+});
+
 export { mock };

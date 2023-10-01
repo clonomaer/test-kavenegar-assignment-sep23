@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { defaultLocale } from "../locales/default";
 import { useSingleTicketService } from "../services/single-ticket";
 import { TicketMessageFormDTO } from "../types/ticket-message";
-import { TicketData } from "../types/ticket";
+import { TicketData, TicketStatus } from "../types/ticket";
 
 interface TicketReplyForm {
   ticketId: TicketData["id"];
@@ -16,7 +16,7 @@ interface TicketReplyForm {
 
 const TicketReplyForm: React.FC<TicketReplyForm> = ({ ticketId }) => {
   const [service] = useSingleTicketService(ticketId);
-  const { refetch } = useQuery(service.queryOptions);
+  const { data, refetch } = useQuery(service.queryOptions);
 
   const {
     register,
@@ -35,12 +35,36 @@ const TicketReplyForm: React.FC<TicketReplyForm> = ({ ticketId }) => {
     },
   });
 
+  const { mutate: closeTicket } = useMutation({
+    ...service.closeTicketOptions,
+    onSuccess() {
+      toast(defaultLocale.main.success, { type: "success" });
+      refetch();
+      reset();
+    },
+  });
+
   const onSubmit = handleSubmit(
     createOnSubmit(TicketMessageFormDTO, setError, mutate)
   );
 
   return (
     <form onSubmit={onSubmit} className="p-4 flex flex-col gap-4">
+      {data && data?.ticket.status !== TicketStatus.CLOSED && (
+        <>
+          <h2 className="text-text-primary">Close this ticket</h2>
+          <Button
+            type="button"
+            onClick={() => {
+              closeTicket(null);
+            }}
+            className="self-start"
+          >
+            Close
+          </Button>
+        </>
+      )}
+
       <h2 className="text-text-primary">Submit another message</h2>
 
       <Input
@@ -50,9 +74,14 @@ const TicketReplyForm: React.FC<TicketReplyForm> = ({ ticketId }) => {
         register={register}
         className="h-40"
         errors={errors}
+        disabled={data?.ticket.status === TicketStatus.CLOSED}
       />
 
-      <Button type="submit" className="self-start">
+      <Button
+        type="submit"
+        className="self-start"
+        disabled={data?.ticket.status === TicketStatus.CLOSED}
+      >
         Submit
       </Button>
     </form>

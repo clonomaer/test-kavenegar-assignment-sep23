@@ -7,6 +7,7 @@ import { TicketMessageFormDTO } from "../types/ticket-message";
 export class SingleTicketService {
   readonly queryOptions: QueryOptions<TicketWithMessagesData>;
   readonly submitMessageOptions: MutationOptions<TicketMessageFormDTO>;
+  readonly closeTicketOptions: MutationOptions<null>;
 
   constructor(private readonly id: number) {
     this.queryOptions = {
@@ -20,6 +21,10 @@ export class SingleTicketService {
     this.submitMessageOptions = {
       mutationKey: ["submitNewTicketMessage", this.id],
       mutationFn: (body) => axios.post(`/ticket/${this.id}`, body),
+    };
+    this.closeTicketOptions = {
+      mutationKey: ["closeTicket", this.id],
+      mutationFn: () => axios.patch(`/ticket/${this.id}/close`),
     };
   }
 }

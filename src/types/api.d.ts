@@ -1,4 +1,8 @@
-import { UseQueryOptions, QueryKey } from "@tanstack/react-query";
+import {
+  UseQueryOptions,
+  QueryKey,
+  UseMutationOptions,
+} from "@tanstack/react-query";
 import { AxiosError, AxiosResponse } from "axios";
 
 export type DataBaseType = Record<string, unknown> | Record<string, unknown>[];
@@ -18,4 +22,15 @@ export type QueryOptions<
   AxiosError,
   TData,
   TQueryKey
+>;
+
+export type MutationOptions<
+  Dto extends object,
+  TData extends DataBaseType | null = null,
+  TContext = unknown
+> = UseMutationOptions<
+  AxiosResponse<ApiResponse<TData>>,
+  AxiosError,
+  Dto,
+  TContext
 >;

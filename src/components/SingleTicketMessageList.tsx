@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "./LoadingSpinner";
 import { defaultLocale } from "../locales/default";
 import _ from "lodash";
-import { formatLocalDate, parseServerDate } from "../utils/format-datetime";
+import { formatLocalDateTime, parseServerDate } from "../utils/format-datetime";
 
 interface TicketDetailsProps {
   ticketId: TicketData["id"];
@@ -27,7 +27,9 @@ const TicketDetails: React.FC<TicketDetailsProps> = ({ ticketId }) => {
           {defaultLocale.api.tickets.titles.received}
           {`:`}
         </span>
-        <span>{formatLocalDate(parseServerDate(data.ticket.received))}</span>
+        <span>
+          {formatLocalDateTime(parseServerDate(data.ticket.received))}
+        </span>
       </p>
       <p className="text-text-secondary flex gap-2">
         <span>

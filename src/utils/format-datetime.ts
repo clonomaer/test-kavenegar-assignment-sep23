@@ -27,3 +27,7 @@ export function parseServerDate(dateString: string): Date | null {
 export function formatLocalDate(date: Date | null): string {
   return date ? date.toLocaleDateString() : defaultLocale.main.notAvailable;
 }
+
+export function formatLocalDateTime(date: Date | null): string {
+  return date ? date.toLocaleString() : defaultLocale.main.notAvailable;
+}

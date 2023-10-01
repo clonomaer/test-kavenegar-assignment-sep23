@@ -34,7 +34,7 @@ function Input<T extends object, E extends "textarea" | "input">({
       )}
       {React.createElement(element ?? "input", {
         className:
-          "appearance-none border border-primary rounded w-full py-2 px-3 text-text-primary leading-tight focus:outline-none focus:shadow-outline bg-primary-900 " +
+          "appearance-none border border-primary rounded w-full py-2 px-3 text-text-primary leading-tight focus:outline-none focus:shadow-outline bg-primary-900 disabled:opacity-30 disabled:cursor-not-allowed " +
           className,
         id,
         ...(register?.(name) ?? {}),

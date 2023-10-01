@@ -9,7 +9,7 @@ The goal of this assignment is to evaluate my ability to develop a React applica
 ## Time Consideration
 
 To respect your time constraints, I have aimed to complete the task within the suggested timeframe of 7 hours. I've prioritized functionality over appearance, and any comments in the code indicate areas for improvement or suggestions that could not be implemented within the given timeframe.  
-detailed info made possible by WakaTime on [this repository's dashboard](https://wakatime.com/@clonomaer/projects/zpgtcjvrqx?start=2023-09-24&end=2023-09-30).  
+detailed info made possible by WakaTime on [this repository's dashboard](https://wakatime.com/@clonomaer/projects/zpgtcjvrqx?start=2023-09-25&end=2023-10-01).  
 [![wakatime](https://wakatime.com/badge/user/5e4f5ed0-dd2e-4204-b88b-ee84d3aad996/project/63def576-bc76-4d7d-873f-a08b7e3a0e56.svg)](https://wakatime.com/badge/user/5e4f5ed0-dd2e-4204-b88b-ee84d3aad996/project/63def576-bc76-4d7d-873f-a08b7e3a0e56)
 
 ## Delivery

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { TicketData } from "../types/ticket";
 import { useSingleTicketService } from "../services/single-ticket";
 import { useQuery } from "@tanstack/react-query";
@@ -14,6 +14,17 @@ interface TicketDetailsProps {
 const TicketDetails: React.FC<TicketDetailsProps> = ({ ticketId }) => {
   const [service] = useSingleTicketService(ticketId);
   const { data, isLoading } = useQuery(service.queryOptions);
+
+  const messages = useMemo(
+    () =>
+      data
+        ? [
+            { id: data.ticket.id, message: data.ticket.message },
+            ...data.messages,
+          ]
+        : undefined,
+    [data]
+  );
 
   if (isLoading || _.isUndefined(data)) {
     return <LoadingSpinner />;
@@ -39,13 +50,16 @@ const TicketDetails: React.FC<TicketDetailsProps> = ({ ticketId }) => {
         <span>{defaultLocale.api.tickets.status[data.ticket.status]}</span>
       </p>
 
-      <div className="mt-4">
+      <div className="mt-4 flex flex-col gap-4">
         <h3 className="text-text-primary">
           {defaultLocale.api.tickets.titles.messages}
         </h3>
-        <ul>
-          {data?.messages.map((message) => (
-            <li key={message.id} className="text-text-secondary">
+        <ul className="flex flex-col gap-2">
+          {messages?.map((message) => (
+            <li
+              key={message.id}
+              className="text-text-secondary border-b border-primary-800"
+            >
               {message.message}
             </li>
           ))}

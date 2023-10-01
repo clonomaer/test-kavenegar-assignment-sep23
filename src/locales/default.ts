@@ -5,6 +5,14 @@ export const defaultLocale = {
   main: {
     appTitle: "FooTickets",
     notAvailable: "N/A",
+    success: "Success!",
+    fail: "Something went wrong!",
+    notFound: "Not Found!",
+  },
+  routes: {
+    ticketList: {
+      submitNewTicketButton: "Submit a new Ticket",
+    },
   },
   api: {
     tickets: {

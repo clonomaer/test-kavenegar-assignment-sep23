@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import TicketDetails from "../components/SingleTicketMessageList";
 import _ from "lodash";
 import NewTicketForm from "../components/NewTicketForm";
+import TicketReplyForm from "../components/TicketReplyForm";
 
 const TicketPage: React.FC = () => {
   const location = useLocation();
@@ -15,7 +16,10 @@ const TicketPage: React.FC = () => {
   return (
     <MainLayout>
       {!_.isNull(ticketId) && !_.isEmpty(ticketId) ? (
-        <TicketDetails ticketId={Number(ticketId)} />
+        <>
+          <TicketDetails ticketId={Number(ticketId)} />
+          <TicketReplyForm ticketId={Number(ticketId)} />
+        </>
       ) : (
         <NewTicketForm />
       )}

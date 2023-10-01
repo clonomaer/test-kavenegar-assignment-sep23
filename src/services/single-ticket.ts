@@ -1,10 +1,12 @@
 import { axios } from "../helpers/axios";
-import { QueryOptions } from "../types/api";
+import { MutationOptions, QueryOptions } from "../types/api";
 import React, { useEffect, useState } from "react";
 import { TicketWithMessagesData } from "../types/ticket";
+import { TicketMessageFormDTO } from "../types/ticket-message";
 
 export class SingleTicketService {
   readonly queryOptions: QueryOptions<TicketWithMessagesData>;
+  readonly submitMessageOptions: MutationOptions<TicketMessageFormDTO>;
 
   constructor(private readonly id: number) {
     this.queryOptions = {
@@ -15,10 +17,10 @@ export class SingleTicketService {
         }),
       select: (res) => res.data.data,
     };
-  }
-
-  submitNewMessage() {
-    throw new Error("not implemented");
+    this.submitMessageOptions = {
+      mutationKey: ["submitNewTicketMessage", this.id],
+      mutationFn: (body) => axios.post(`/ticket/${this.id}`, body),
+    };
   }
 }
 

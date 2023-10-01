@@ -113,7 +113,6 @@ mock.onPost("/ticket").reply((config) => {
     status: TicketStatus.PENDING,
   });
   ticketsMessagesData[id] = [];
-  console.log("here", JSON.parse(config.data));
   return [
     201,
     {
@@ -122,6 +121,26 @@ mock.onPost("/ticket").reply((config) => {
       data: null,
     },
   ];
+});
+
+mock.onPost(singleTicketUrlRegex).reply((config) => {
+  const match = singleTicketUrlRegex.exec(config.url ?? "");
+  if (match && match[1]) {
+    const item = allTickets.find((elm) => elm.id === Number(match[1]));
+    if (item) {
+      const id = _.random(0, Number.MAX_SAFE_INTEGER);
+      ticketsMessagesData[item.id].push({ ...JSON.parse(config.data), id });
+      return [
+        201,
+        {
+          status: 201,
+          errors: null,
+          data: null,
+        },
+      ];
+    }
+  }
+  return [204, { status: 404, errors: null, data: null }];
 });
 
 export { mock };
